@@ -12,7 +12,8 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        //
+        $proveedores = Proveedor::latest()->paginate(10);
+        return view('Layouts.proveedores.index', compact('proveedores'));
     }
 
     /**

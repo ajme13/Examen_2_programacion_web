@@ -1,53 +1,58 @@
-@extends('layouts.admin')
+@extends('Layouts.admin')
 
-@section('titulo', 'Planilla de Empleados')
+@section('titulo', 'Lista de Empleados')
 
 @section('contenido')
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
-        <h1 class="h3 text-gray-800 mb-0">👥 Recursos Humanos - Planilla Oficial</h1>
-        <small class="text-muted">Ferretería La Bendición - Control de Personal</small>
-    </div>
-    <a href="{{ Route::has('empleados.create') ? route('empleados.create') : url('/empleados/create') }}" class="btn btn-primary shadow-sm">
-        <i class="fas fa-user-plus me-1"></i> Contratar Empleado
+    <h1 class="h3"> Plantilla de Proveedores</h1>
+    <a href="{{ route('proveedores.create') }}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Añadir Proveedor
     </a>
 </div>
 
-<div class="card shadow-sm mb-4 border-0">
-    <div class="card-header bg-dark text-white py-3">
-        <h6 class="m-0 font-weight-bold"><i class="fas fa-id-card me-2"></i>Personal Activo en Sucursal</h6>
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-white py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Listado General - Disfarma</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-hover align-middle">
-                <thead class="table-light">
+                <thead class="table-dark">
                     <tr>
-                        <th class="text-center" style="width: 50px;">ID</th>
-                        <th>No. Identidad / DNI</th>
-                        <th>Nombre Completo</th>
-                        <th>Puesto / Cargo</th>
-                        <th class="text-end">Salario Mensual</th>
-                        <th class="text-center">Fecha Ingreso</th>
-                        <th class="text-center" style="width: 150px;">Acciones</th>
+                        <th>ID</th>
+                        <th>RTN</th>
+                        <th>Empresa</th>
+                        <th>Contacto</th>
+                        <th>Telefono (L.)</th>
+                        <th>Categoria</th>
+                        <th>Lim_credito</th>
+                        <th>Dias_credito</th>
+                        <th>Estado</th>
+                        <th>Registro</th>
+                        <th class="text-center" style="width: 160px;">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($empleados as $empleado)
+                    @forelse ($proveedores as $proveedor)
                     <tr>
-                        <td class="text-center text-muted fw-bold">{{ $empleado->id }}</td>
-                        <td><code>{{ $empleado->identidad }}</code></td>
-                        <td class="fw-bold text-dark">{{ $empleado->nombre }}</td>
-                        <td><span class="badge bg-info text-dark">{{ $empleado->cargo }}</span></td>
-                        <td class="text-end fw-bold text-success">L. {{ number_format($empleado->salario, 2) }}</td>
-                        <td class="text-center">{{ date('d/m/Y', strtotime($empleado->fecha_ingreso)) }}</td>
+                        <td>{{ $proveedor->id }}</td>
+                        <td>{{ $proveedor->rtn }}</td>
+                        <td class="fw-bold">{{ $proveedor->empresa }}</td>
+                        <td class="fw-bold">{{ $proveedor->contacto}}</td>
+                        <td class="fw-bold">{{ $proveedor->telefono}}</td>
+                        <td class="fw-bold">{{ $proveedor->categoria}}</td>
+                        <td class="fw-bold">{{ $proveedor->lim_credito}}</td>
+                        <td class="fw-bold">{{ $proveedor->dias_credito}}</td>
+                        <td class="fw-bold">{{ $proveedor->estado}}</td>
+                        <td class="fw-bold">{{ $proveedor->registro}}</td>
                         <td class="text-center">
-                            <a href="{{ Route::has('empleados.edit') ? route('empleados.edit', $empleado) : url('/empleados/' . $empleado->id . '/edit') }}" class="btn btn-warning btn-sm me-1" title="Editar Expediente">
-                                <i class="fas fa-pen"></i>
+                            <a href="{{ route('proveedores.edit', $proveedor) }}" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ Route::has('empleados.destroy') ? route('empleados.destroy', $empleado) : url('/empleados/' . $empleado->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Confirma que desea retirar a este empleado de la nómina oficial?')">
+                            <form action="{{ route('proveedores.destroy', $proveedores) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que deseas eliminar a este proveedor?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" title="Dar de Baja">
+                                <button type="submit" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -55,19 +60,13 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="text-center text-muted py-5">
-                            <i class="fas fa-users-slash fa-3x mb-3 text-secondary d-block"></i>
-                            No hay empleados registrados en la planilla. Haz clic en <strong>Contratar Empleado</strong> para registrar personal.
-                        </td>
+                        <td colspan="11" class="text-center text-muted py-4">No hay empleados cotratados aun.</td>
                     </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
-
-        <div class="d-flex justify-content-end mt-3">
-            {{ $empleados->links() }}
-        </div>
+        {{ $proveedores->links() }}
     </div>
 </div>
 @endsection
