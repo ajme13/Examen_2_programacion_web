@@ -11,7 +11,6 @@ Route::get('/', function () {
 
 Route::resource('medicamentos', MedicamentoController::class);
 
-
 Route::resource('empleados', EmpleadoController::class);
 
 Route::resource('proveedores', ProveedorController::class);

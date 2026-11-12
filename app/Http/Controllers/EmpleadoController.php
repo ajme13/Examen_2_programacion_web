@@ -12,7 +12,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+        $empleados = Empleado::latest()->paginate(10);
+        return view('Layouts.empleados.index', compact('empleados'));
     }
 
     /**
