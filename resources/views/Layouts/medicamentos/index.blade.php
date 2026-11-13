@@ -12,7 +12,7 @@
 
 <div class="card shadow-sm mb-4">
     <div class="card-header bg-white py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Listado General - Ferretería La Bendición</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Listado General - Disfarma</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
