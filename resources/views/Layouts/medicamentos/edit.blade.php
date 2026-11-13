@@ -101,7 +101,7 @@
                         <img src="{{ asset('storage/' . $medicamento->imagen) }}" alt="Imagen actual" class="img-thumbnail" style="max-height: 100px;">
                     </div>
                 @endif
-                <input type="img" name="imagen" accept="image/*" class="form-control @error('imagen') is-invalid @enderror">
+                <input type="url" id="imagen" name="imagen" class="form-control @error('imagen') is-invalid @enderror" value="{{ old('imagen') }}" placeholder="https://ejemplo.com/imagen-producto.jpg">
                 @error('imagen') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
 

@@ -57,7 +57,7 @@
 
             <div class="mb-3">
                 <label for="imagen" class="form-label">Imagen del Producto (Opcional)</label>
-                <input type="img" name="imagen" id="imagen" accept="" class="form-control @error('imagen') is-invalid @enderror">
+                <input type="url" id="imagen" name="imagen" class="form-control @error('imagen') is-invalid @enderror" value="{{ old('imagen') }}" placeholder="https://ejemplo.com/imagen-producto.jpg">               
                 @error('imagen')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

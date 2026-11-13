@@ -57,12 +57,9 @@
                     <label class="form-label fw-bold">Categoría <span class="text-danger">*</span></label>
                     <select name="categoria" class="form-select @error('categoria') is-invalid @enderror">
                         <option value="">-- Seleccione una Categoría --</option>
-                        <option value="Antibióticos" {{ old('categoria') == 'Antibióticos' ? 'selected' : '' }}>Antibióticos</option>
-                        <option value="Analgésicos" {{ old('categoria') == 'Analgésicos' ? 'selected' : '' }}>Analgésicos</option>
-                        <option value="Sueros" {{ old('categoria') == 'Sueros' ? 'selected' : '' }}>Sueros</option>
                         <option value="Material Quirúrgico" {{ old('categoria') == 'Material Quirúrgico' ? 'selected' : '' }}>Material Quirúrgico</option>
-                        <option value="Vitaminas" {{ old('categoria') == 'Vitaminas' ? 'selected' : '' }}>Vitaminas</option>
-                        <option value="General / Varios" {{ old('categoria') == 'General / Varios' ? 'selected' : '' }}>General / Varios</option>
+                        <option value="Farmacos" {{ old('categoria') == 'Farmacos' ? 'selected' : '' }}>Farmacos</option>
+                        <option value="Equipos" {{ old('categoria') == 'Equipos' ? 'selected' : '' }}>Equipos</option>
                     </select>
                     @error('categoria')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -93,9 +90,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-3">
-                    <label class="form-label fw-bold">Días de Crédito <span class="text-danger">*</span></label>
-                    <input type="number" name="dias_credito" class="form-control @error('dias_credito') is-invalid @enderror" value="{{ old('dias_credito', 30) }}" placeholder="Ej: 30">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Dias de Credito <span class="text-danger">*</span></label>
+                    <select name="dias_credito" class="form-select @error('dias_credito') is-invalid @enderror">
+                        <option value="">-- Seleccione un dia --</option>
+                        <option value="15" {{ old('dias_credito') == '15' ? 'selected' : '' }}>15</option>
+                        <option value="30" {{ old('dias_credito') == '30' ? 'selected' : '' }}>30</option>
+                        <option value="45" {{ old('dias_credito') == '45' ? 'selected' : '' }}>45</option>
+                        <option value="60" {{ old('dias_credito') == '60' ? 'selected' : '' }}>60</option>
+                    </select>
                     @error('dias_credito')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

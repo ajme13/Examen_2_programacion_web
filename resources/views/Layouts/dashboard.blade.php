@@ -6,8 +6,6 @@
     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Content Row -->
@@ -119,7 +117,7 @@
                                 <div class="card-body">
                                     <p>Farmacia Disfarma, Examen 2 Programacion web</p><br>
                                     <p>Alejandro Martinez 20221031610</p><br>
-                                    <p>Ing. Melquiades Betanco</p><br>
+                                    <p>Ing. Merquiades Betanco</p><br>
                                     <p>Farmacia Disfarma, Examen 2 Programacion web</p><br>
                                 </div>
                             </div>

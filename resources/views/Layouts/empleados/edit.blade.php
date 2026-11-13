@@ -47,11 +47,11 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Puesto / Cargo <span class="text-danger">*</span></label>
                     <select name="cargo" class="form-select @error('cargo') is-invalid @enderror">
-                        <option value="Cajero(a)" {{ old('cargo', $empleado->cargo) == 'Cajero(a)' ? 'selected' : '' }}>Cajero(a)</option>
-                        <option value="Vendedor de Mostrador" {{ old('cargo', $empleado->cargo) == 'Vendedor de Mostrador' ? 'selected' : '' }}>Vendedor de Mostrador</option>
-                        <option value="Encargado de Bodega" {{ old('cargo', $empleado->cargo) == 'Encargado de Bodega' ? 'selected' : '' }}>Encargado de Bodega</option>
-                        <option value="Asesor Técnico en Construcción" {{ old('cargo', $empleado->cargo) == 'Asesor Técnico en Construcción' ? 'selected' : '' }}>Asesor Técnico en Construcción</option>
-                        <option value="Gerente de Sucursal" {{ old('cargo', $empleado->cargo) == 'Gerente de Sucursal' ? 'selected' : '' }}>Gerente de Sucursal</option>
+                        <option value="Regente farmaceutico" {{ old('cargo', $empleado->cargo) == 'Regente farmaceutico' ? 'selected' : '' }}>Regente farmaceutico</option>
+                        <option value="Asistente de farmacia" {{ old('cargo', $empleado->cargo) == 'Asistente de farmacia' ? 'selected' : '' }}>Asistente de farmacia</option>
+                        <option value="Jefe de Bodega" {{ old('cargo', $empleado->cargo) == 'Jefe de Bodega' ? 'selected' : '' }}>Jefe de Bodega</option>
+                        <option value="Despachador" {{ old('cargo', $empleado->cargo) == 'Despachador' ? 'selected' : '' }}>Despachador</option>
+                        <option value="Cajero" {{ old('cargo', $empleado->cargo) == 'Cajero' ? 'selected' : '' }}>Cajero</option>
                     </select>
                     @error('cargo')
                         <div class="invalid-feedback">{{ $message }}</div>

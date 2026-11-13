@@ -52,7 +52,13 @@
                                 <span class="badge bg-danger">{{ $medicamento->stock}} (Desabastecimiento!!)</span>
                             @endif
                         </td>
-                        <td class="fw-bold">{{ $medicamento->imagen}}</td>
+                        <td>
+                            @if($medicamento->imagen)
+                                <img src="{{ $medicamento->imagen }}" alt="{{ $medicamento->nombre }}" width="50" height="50" style="object-fit: cover;" class="rounded shadow-sm">
+                            @else
+                                <span class="text-muted small">Sin imagen</span>
+                            @endif
+                        </td>
                         <td class="fw-bold">{{ $medicamento->laboratorio}}</td>
                         <td class="fw-bold">{{ $medicamento->vencimiento}}</td>
                         <td class="fw-bold">{{ $medicamento->registro}}</td>
