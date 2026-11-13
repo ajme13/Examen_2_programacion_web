@@ -21,7 +21,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('Layouts.proveedores.create');
     }
 
     /**
@@ -29,7 +29,23 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'identidad'      => 'nullable|max:255',
+            'rtn'            => 'nullable|max:255',
+            'empresa'        => 'nullable',
+            'contacto'       => 'nullable',
+            'telefono'       => 'nullable',
+            'categoria'      => 'nullable',
+            'lim_credito'    => 'nullable|numeric|min:0',
+            'dias_credito'   => 'nullable',
+            'activo' => 'required|in:Activo,Inactivo',
+            'registro'       => 'nullable',
+        ]);
+
+        Proveedor::create($request->all());
+
+        return redirect()->route('proveedores.index')
+                         ->with('success', '¡Proveedor registrado exitosamente en el sistema!');
     }
 
     /**
@@ -45,7 +61,7 @@ class ProveedorController extends Controller
      */
     public function edit(Proveedor $proveedor)
     {
-        //
+        return view('Layouts.proveedores.edit', compact('proveedor'));
     }
 
     /**
@@ -53,7 +69,23 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, Proveedor $proveedor)
     {
-        //
+        $request->validate([
+            'identidad'      => 'nullable|max:255',
+            'rtn'            => 'nullable|max:255',
+            'empresa'        => 'nullable',
+            'contacto'       => 'nullable',
+            'telefono'       => 'nullable',
+            'categoria'      => 'nullable',
+            'lim_credito'    => 'nullable|numeric|min:0',
+            'dias_credito'   => 'nullable',
+            'activo' => 'required|in:Activo,Inactivo',
+            'registro'       => 'nullable',
+        ]);
+
+        $proveedor->update($request->all());
+
+        return redirect()->route('proveedores.index')
+                         ->with('success', '¡Proveedor actualizado correctamente!');
     }
 
     /**
@@ -61,6 +93,9 @@ class ProveedorController extends Controller
      */
     public function destroy(Proveedor $proveedor)
     {
-        //
+        $proveedor->delete();
+
+        return redirect()->route('proveedores.index')
+                         ->with('success', '¡Proveedor eliminado del sistema!');
     }
 }

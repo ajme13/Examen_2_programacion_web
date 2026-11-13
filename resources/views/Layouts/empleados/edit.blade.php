@@ -27,9 +27,17 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="form-label fw-bold">Nombre Completo <span class="text-danger">*</span></label>
+                    <label class="form-label fw-bold">Nombre <span class="text-danger">*</span></label>
                     <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $empleado->nombre) }}">
                     @error('nombre')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Apellido <span class="text-danger">*</span></label>
+                    <input type="text" name="apellido" class="form-control @error('apellido') is-invalid @enderror" value="{{ old('apellido', $empleado->apellido) }}">
+                    @error('apellido')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -39,14 +47,24 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Puesto / Cargo <span class="text-danger">*</span></label>
                     <select name="cargo" class="form-select @error('cargo') is-invalid @enderror">
-                        @php $c = old('cargo', $empleado->cargo); @endphp
-                        <option value="Cajero(a)" {{ $c == 'Cajero(a)' ? 'selected' : '' }}>Cajero(a)</option>
-                        <option value="Vendedor de Mostrador" {{ $c == 'Vendedor de Mostrador' ? 'selected' : '' }}>Vendedor de Mostrador</option>
-                        <option value="Encargado de Bodega" {{ $c == 'Encargado de Bodega' ? 'selected' : '' }}>Encargado de Bodega</option>
-                        <option value="Asesor Técnico en Construcción" {{ $c == 'Asesor Técnico en Construcción' ? 'selected' : '' }}>Asesor Técnico en Construcción</option>
-                        <option value="Gerente de Sucursal" {{ $c == 'Gerente de Sucursal' ? 'selected' : '' }}>Gerente de Sucursal</option>
+                        <option value="Cajero(a)" {{ old('cargo', $empleado->cargo) == 'Cajero(a)' ? 'selected' : '' }}>Cajero(a)</option>
+                        <option value="Vendedor de Mostrador" {{ old('cargo', $empleado->cargo) == 'Vendedor de Mostrador' ? 'selected' : '' }}>Vendedor de Mostrador</option>
+                        <option value="Encargado de Bodega" {{ old('cargo', $empleado->cargo) == 'Encargado de Bodega' ? 'selected' : '' }}>Encargado de Bodega</option>
+                        <option value="Asesor Técnico en Construcción" {{ old('cargo', $empleado->cargo) == 'Asesor Técnico en Construcción' ? 'selected' : '' }}>Asesor Técnico en Construcción</option>
+                        <option value="Gerente de Sucursal" {{ old('cargo', $empleado->cargo) == 'Gerente de Sucursal' ? 'selected' : '' }}>Gerente de Sucursal</option>
                     </select>
                     @error('cargo')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Estado <span class="text-danger">*</span></label>
+                    <select name="activo" class="form-select @error('activo') is-invalid @enderror">
+                        <option value="Activo" {{ old('activo', $empleado->activo) == 'Activo' ? 'selected' : '' }}>Activo</option>
+                        <option value="Inactivo" {{ old('activo', $empleado->activo) == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                    </select>
+                    @error('activo')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

@@ -38,6 +38,7 @@
                     @forelse ($medicamentos as $medicamento)
                     <tr>
                         <td>{{ $medicamento->id }}</td>
+                        <td class="fw-bold">{{ $medicamento->codigo }}</td>
                         <td class="fw-bold">{{ $medicamento->nombre }}</td>
                         <td class="fw-bold">{{ $medicamento->categoria}}</td>
                         <td>L. {{ number_format($medicamento->precio, 2) }}</td>
@@ -60,7 +61,7 @@
                             <a href="{{ route('medicamentos.edit', $medicamento) }}" class="btn btn-warning btn-sm">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('medicamentos.destroy', $medicamentos) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que deseas eliminar este medicamento?')">
+                            <form action="{{ route('medicamentos.destroy', $medicamento) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que deseas eliminar este medicamento?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">
@@ -71,7 +72,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="15" class="text-center text-muted py-4">No hay medicamentos registrados aún.</td>
+                        <td colspan="13" class="text-center text-muted py-4">No hay medicamentos registrados aún.</td>
                     </tr>
                     @endforelse
                 </tbody>

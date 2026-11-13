@@ -21,7 +21,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Layouts.empleados.create');
     }
 
     /**
@@ -29,7 +29,21 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'identidad'      => 'nullable|max:255',
+            'nombre'         => 'nullable|max:255',
+            'apellido'       => 'nullable',
+            'correo'         => 'nullable',
+            'cargo'          => 'nullable',
+            'salario'        => 'nullable|numeric|min:0',
+            'estado'         => 'nullable',
+            'ingreso'        => 'nullable',
+        ]);
+
+        Empleado::create($request->all());
+
+        return redirect()->route('empleados.index')
+                         ->with('success', '¡Empleado registrado exitosamente en el sistema!');
     }
 
     /**
@@ -45,7 +59,7 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado)
     {
-        //
+        return view('Layouts.empleados.edit', compact('empleado'));
     }
 
     /**
@@ -53,7 +67,21 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
-        //
+        $request->validate([
+            'identidad'      => 'nullable|max:255',
+            'nombre'         => 'nullable|max:255',
+            'apellido'       => 'nullable',
+            'correo'         => 'nullable',
+            'cargo'          => 'nullable',
+            'salario'        => 'nullable|numeric|min:0',
+            'activo'         => 'nullable|max:255',
+            'ingreso'        => 'nullable|max:255',
+        ]);
+
+        $empleado->update($request->all());
+
+        return redirect()->route('empleados.index')
+                         ->with('success', '¡Empleado actualizado correctamente!');
     }
 
     /**
@@ -61,6 +89,9 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
-        //
+        $empleado->delete();
+
+        return redirect()->route('empleados.index')
+                         ->with('success', '¡Empleado eliminado del sistema!');
     }
 }

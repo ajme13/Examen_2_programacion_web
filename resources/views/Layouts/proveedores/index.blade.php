@@ -23,9 +23,9 @@
                         <th>RTN</th>
                         <th>Empresa</th>
                         <th>Contacto</th>
-                        <th>Telefono (L.)</th>
+                        <th>Telefono</th>
                         <th>Categoria</th>
-                        <th>Lim_credito</th>
+                        <th>Lim_credito (L.)</th>
                         <th>Dias_credito</th>
                         <th>Estado</th>
                         <th>Registro</th>
@@ -43,13 +43,13 @@
                         <td class="fw-bold">{{ $proveedor->categoria}}</td>
                         <td class="fw-bold">{{ $proveedor->lim_credito}}</td>
                         <td class="fw-bold">{{ $proveedor->dias_credito}}</td>
-                        <td class="fw-bold">{{ $proveedor->estado}}</td>
+                        <td class="fw-bold">{{ $proveedor->activo}}</td>
                         <td class="fw-bold">{{ $proveedor->registro}}</td>
                         <td class="text-center">
                             <a href="{{ route('proveedores.edit', $proveedor) }}" class="btn btn-warning btn-sm">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('proveedores.destroy', $proveedores) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que deseas eliminar a este proveedor?')">
+                            <form action="{{ route('proveedores.destroy', $proveedor) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que deseas eliminar a este proveedor?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">

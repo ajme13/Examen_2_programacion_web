@@ -21,7 +21,7 @@ class MedicamentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Layouts.medicamentos.create');
     }
 
     /**
@@ -29,7 +29,24 @@ class MedicamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'codigo'      => 'nullable|max:255',
+            'nombre'      => 'nullable|max:255',
+            'categoria'   => 'nullable',
+            'precio'      => 'nullable|numeric|min:0',
+            'costo'       => 'nullable|numeric|min:0',
+            'stock'       => 'nullable|integer|min:0',
+            'imagen'      => 'nullable',
+            'laboratorio' => 'nullable|max:255',
+            'vencimiento' => 'nullable|max:255',
+            'registro'    => 'nullable|max:255',
+            'lote'        => 'nullable|max:255',
+        ]);
+
+        Medicamento::create($request->all());
+
+        return redirect()->route('medicamentos.index')
+                         ->with('success', '¡Medicamento registrado exitosamente en el inventario!');
     }
 
     /**
@@ -45,7 +62,7 @@ class MedicamentoController extends Controller
      */
     public function edit(Medicamento $medicamento)
     {
-        //
+        return view('Layouts.medicamentos.edit', compact('medicamento'));
     }
 
     /**
@@ -53,7 +70,24 @@ class MedicamentoController extends Controller
      */
     public function update(Request $request, Medicamento $medicamento)
     {
-        //
+        $request->validate([
+            'codigo'      => 'nullable|max:255',
+            'nombre'      => 'nullable|max:255',
+            'categoria'   => 'nullable',
+            'precio'      => 'nullable|numeric|min:0',
+            'costo'       => 'nullable|numeric|min:0',
+            'stock'       => 'nullable|integer|min:0',
+            'imagen'      => 'nullable',
+            'laboratorio' => 'nullable|max:255',
+            'vencimiento' => 'nullable|max:255',
+            'registro'    => 'nullable|max:255',
+            'lote'        => 'nullable|max:255',
+        ]);
+
+        $medicamento->update($request->all());
+
+        return redirect()->route('medicamentos.index')
+                         ->with('success', '¡Medicamento actualizado correctamente!');
     }
 
     /**
@@ -61,6 +95,9 @@ class MedicamentoController extends Controller
      */
     public function destroy(Medicamento $medicamento)
     {
-        //
+        $medicamento->delete();
+
+        return redirect()->route('medicamentos.index')
+                         ->with('success', '¡Medicamento eliminado del inventario!');
     }
 }

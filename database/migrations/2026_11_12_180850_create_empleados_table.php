@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('correo');
             $table->string('cargo');
             $table->decimal('salario', 10, 2);
-            $table->boolean('activo')->default(true); //el estado por defecto esta en activo(inactivo false)
+            $table->string('activo');
             $table->date('ingreso');
             $table->timestamps();
         });

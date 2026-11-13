@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('categoria');
             $table->decimal('lim_credito', 10, 2);
             $table->integer('dias_credito');
-            $table->boolean('activo')->default(true); //el estado por defecto esta en activo(inactivo false)
+            $table->string('activo'); 
             $table->date('registro');
             $table->timestamps();
         });
